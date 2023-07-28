@@ -1,16 +1,19 @@
-import { GoogleAnalytics } from "nextjs-google-analytics";
-import '../styles/globals.scss';
+import { ThirdwebProvider } from "@thirdweb-dev/react";
+import "../styles/globals.scss";
 
+// This is the chain your dApp will work on.
+// Change this to the chain your app is built for.
+// You can also import additional chains from `@thirdweb-dev/chains` and pass them directly.
+const activeChain = "binance";
 
-function App({ Component, pageProps }) {
-	return (
-		<>
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThirdwebProvider activeChain={activeChain}>
       
-      <GoogleAnalytics gaMeasurementId="UA-249910106-1" />
-      <Component {...pageProps} />
-      
-    </>
-	)
+        <Component {...pageProps} />
+    
+    </ThirdwebProvider>
+  );
 }
 
-export default App;
+export default MyApp;
